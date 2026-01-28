@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Vedika Kumar | Psychiatry & Psychotherapy</title>
+    <link rel="stylesheet" href="https://use.typekit.net/bkx1kfy.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'adobe-garamond-pro', 'Garamond', 'Georgia', serif;
+            line-height: 1.7;
+            color: #333333;
+            background: #faf8f5;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(250, 248, 245, 0.98);
+            border-bottom: 1px solid #e8e6e1;
+            z-index: 1000;
+            padding: 1.5rem 0;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-size: 1rem;
+            transition: opacity 0.3s;
+            letter-spacing: 0;
+            cursor: pointer;
+        }
+
+        nav a:hover,
+        nav a.active {
+            opacity: 0.6;
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding: 8rem 2rem 4rem;
+            align-items: center;
+        }
+
+        .page.active {
+            display: flex;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Home Page */
+        .home-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .headshot {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .intro h1 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #000000;
+            line-height: 1.2;
+        }
+
+        .intro .subtitle {
+            font-size: 1.3rem;
+            color: #000000;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .intro p {
+            color: #333333;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.9rem 2rem;
+            background: transparent;
+            color: #1a1a1a;
+            text-decoration: none;
+            border: 1px solid #1a1a1a;
+            border-radius: 0;
+            transition: all 0.3s;
+            font-size: 1rem;
+            letter-spacing: 0;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #1a1a1a;
+            color: #faf8f5;
+        }
+
+        /* About Page */
+        h2 {
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 3rem;
+            color: #000000;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .about-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .credentials {
+            border-left: 1px solid #d4d2cd;
+            padding-left: 4rem;
+        }
+
+        .about-content p {
+            margin-bottom: 1.5rem;
+            color: #333333;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .about-content a {
+            color: #6b7280;
+            text-decoration: underline;
+            transition: opacity 0.3s;
+        }
+        
+        .about-content a:hover {
+            opacity: 0.6;
+        }
+
+        .credentials h3 {
+            font-size: 1.3rem;
+            font-weight: 550;
+            margin-bottom: 1.5rem;
+            color: #000000;
+        }
+
+        .credentials ul {
+            list-style: none;
+            color: #333333;
+        }
+
+        .credentials li {
+            padding: 1rem 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .credentials strong {
+            font-weight: 550;
+            display: block;
+            margin-bottom: 0.3rem;
+            color: #000000;
+        }
+        
+        .credentials .degree {
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+
+        /* Services Page */
+        .services-content {
+            max-width: 700px;
+            margin-top: 2rem;
+        }
+        
+        .services-content p {
+            margin-bottom: 2rem;
+            color: #333333;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .services-content strong {
+            color: #000000;
+            font-weight: 550;
+            font-size: 1.1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .service-item {
+            padding: 2rem;
+            background: white;
+            border: 1px solid #d4d2cd;
+            border-radius: 0;
+        }
+
+        .service-item h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            color: #000000;
+        }
+
+        .service-item p {
+            color: #333333;
+            line-height: 1.7;
+            font-size: 1.05rem;
+        }
+
+        /* Research Page */
+        .research-intro {
+            margin-bottom: 2.5rem;
+            color: #333333;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        .publications {
+            margin-top: 2rem;
+        }
+
+        .publication-item {
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #d4d2cd;
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+        }
+
+        .publication-item p {
+            color: #333333;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .publication-item strong {
+            color: #000000;
+            font-weight: 550;
+        }
+
+        .publication-item em {
+            font-style: italic;
+        }
+
+        /* Contact Page */
+        .contact-content {
+            max-width: 700px;
+            margin-top: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            margin-bottom: 1.5rem;
+            color: #000000;
+        }
+
+        .contact-info p {
+            color: #333333;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+        
+        .contact-info a {
+            color: #6b7280;
+            text-decoration: underline;
+            transition: opacity 0.3s;
+        }
+        
+        .contact-info a:hover {
+            opacity: 0.6;
+        }
+
+        .contact-details {
+            margin-top: 2rem;
+        }
+
+        .contact-details div {
+            margin-bottom: 1rem;
+            color: #333333;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            font-weight: 550;
+            margin-bottom: 0.5rem;
+            color: #000000;
+        }
+        
+        .phone-number {
+            font-size: 1.05rem;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border: 1px solid #d4d2cd;
+            border-radius: 0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #000000;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d4d2cd;
+            border-radius: 0;
+            font-family: inherit;
+            font-size: 1rem;
+            color: #333333;
+            transition: border-color 0.3s;
+            background: #faf8f5;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #666;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.9rem;
+            background: transparent;
+            color: #1a1a1a;
+            border: 1px solid #1a1a1a;
+            border-radius: 0;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: 0;
+            font-family: inherit;
+        }
+
+        button[type="submit"]:hover {
+            background: #1a1a1a;
+            color: #faf8f5;
+        }
+
+        /* Footer */
+        footer {
+            background: #9ca3af;
+            color: #333333;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1.5rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .page {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            .home-content,
+            .about-layout {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .credentials {
+                border-left: none;
+                padding-left: 0;
+                padding-top: 2rem;
+                border-top: 1px solid #d4d2cd;
+            }
+
+            .intro h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#services" class="nav-link" data-page="services">Services</a></li>
+                <li><a href="#research" class="nav-link" data-page="research">Research</a></li>
+                <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div class="page active" id="home">
+        <div class="container">
+            <div class="home-content">
+                <img src="headshot.jpg" alt="Dr. Vedika Kumar" class="headshot" />
+                <div class="intro">
+                    <h1>Dr. Vedika Kumar</h1>
+                    <div class="subtitle">Psychiatry & Psychotherapy</div>
+                    <p>I'm a board-certified adult psychiatrist and psychotherapist based in NYC. I am in-network with Aetna.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Page -->
+    <div class="page" id="about">
+        <div class="container">
+            <h2>About</h2>
+            <div class="about-layout">
+                <div class="about-content">
+                    <p>I'm an adult psychiatrist and psychotherapist licensed to see patients in New York State. Because I'm trained in both psychotherapy and medication management, I can provide integrated care, making your treatment more cohesive and effective.</p>
+                    
+                    <p>Often high achieving people find that on the road to success, they have lost touch with important parts of their core self. I enjoy helping people explore and nurture these neglected parts and find deeper connection to their own creativity, their loved ones, and their community.</p>
+
+                    <p>I'd be happy to speak with you more to see if we are a good fit. You can sign up for a free phone consultation <a href="https://care.headway.co/providers/vedika-kumar?utm_source=pem&utm_medium=direct_link&utm_campaign=180613" target="_blank">here</a>. I am currently seeing patients virtually.</p>
+                </div>
+
+                <div class="credentials">
+                    <h3><strong>Education & Training</strong></h3>
+                    <ul>
+                        <li>
+                            <strong>American Board of Psychiatry and Neurology</strong>
+                            <div class="degree">General Psychiatry Board Certification, 2025</div>
+                        </li>
+                        <li>
+                            <strong>Zucker Hillside Hospital</strong>
+                            <div class="degree">Psychiatry Residency, 2021-2025</div>
+                        </li>
+                        <li>
+                            <strong>Psychoanalytic Association of New York</strong>
+                            <div class="degree">Intensive Psychoanalytic Psychotherapy Program, 2024-2025</div>
+                        </li>
+                        <li>
+                            <strong>Icahn School of Medicine at Mount Sinai</strong>
+                            <div class="degree">M.D., 2021</div>
+                        </li>
+                        <li>
+                            <strong>Columbia University</strong>
+                            <div class="degree">B.A. Biology, 2016</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Services Page -->
+    <div class="page" id="services">
+        <div class="container">
+            <h2>Services</h2>
+            <div class="services-content">
+                <p><strong>Psychiatric Evaluation</strong><br>
+                In our first session, you can expect thoughtful, attentive listening as you share what brings you in. Too often in the medical system, we rush to treat without a thorough understanding of the problem at hand. My goal is for you to feel heard, respected, and understood. Depending on your needs and goals, I may recommend therapy with medication, therapy only, or medication only.</p>
+
+                <p><strong>Medication Management</strong><br>
+                I take a conservative and thoughtful approach to prescribing. I also have experience in safe deprescribing and simplifying complex medication regimens.</p>
+
+                <p><strong>Psychodynamic Psychotherapy</strong><br>
+                Psychodynamic psychotherapy examines how past experiences shape our current conflicts. Together, we can foster an open, curious space where we explore your inner world and get to the root of your struggles.</p>
+
+                <p><strong>Exposure and Response Prevention Therapy</strong><br>
+                EXRP is the gold standard treatment for OCD. It can be particularly effective in combination with medication. I am also interested in working with patients who would like to transition from exposure-based work to more exploratory work.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Research Page -->
+    <div class="page" id="research">
+        <div class="container">
+            <h2>Publications</h2>
+            
+            <div class="publications">
+                <div class="publication-item">
+                    <p>Stanislawski, E. R., Saali, A., Magill, E. B., Deshpande, R., <strong>Kumar, V.</strong>, Chan, C., ... & Katz, C. L. (2023). Longitudinal mental health outcomes of third-year medical students rotating through the wards during COVID-19. <em>Psychiatry research</em>, 320, 115030.</p>
+                </div>
+                <div class="publication-item">
+                    <p>Saali, A., Stanislawski, E.R., Magill E, Deshpande, R., <strong>Kumar, V.</strong>, Chan, C., Hurtado, A., Charney, D., Ripp, J., Katz, C, 2022. Longitudinal Mental Health Outcomes of Third-year Medical Students Rotating Through the Wards During COVID-19. <em>Psychiatric Research</em>.</p>
+                </div>
+                <div class="publication-item">
+                    <p>Powell, S.K., Saali, A., Frere, J., Magill, E., Krystal, H., Serafini, R.A., Sultana, S., Dale, B., Ali, M., <strong>Kumar, V.</strong> and Datta, D., 2022. Design of and outcomes in a student-run free mental health clinic serving the uninsured in East Harlem. <em>BMC psychiatry</em>, 22(1), pp.1-13.</p>
+                </div>
+                <div class="publication-item">
+                    <p>Serafini, R.A., Powell, S.K., Frere, J.J., Saali, A., Krystal, H.I.., <strong>Kumar, V.</strong>, Yashaswini, C., Hernandez, J., Moody, K., Aronson, A. and Meah, Y., 2021. Psychological distress in the face of a pandemic: An observational study characterizing the impact of COVID-19 on immigrant outpatient mental health. <em>Psychiatry research</em>, 295, p.113595.</p>
+                </div>
+                <div class="publication-item">
+                    <p>Saali, A., Stanislawski, E.R., <strong>Kumar, V.</strong>, Chan, C., Hurtado, A., Pietrzak, R.H., Charney, D.S., Ripp, J. and Katz, C.I., 2022. The Psychiatric Burden on Medical Students in New York City Entering Clinical Clerkships During the COVID-19 Pandemic. <em>Psychiatric Quarterly</em>, 93(2), pp.419-434.</p>
+                </div>
+                <div class="publication-item">
+                    <p>Stanislawski, E.R., <strong>Kumar, V.</strong> and Katz, C.L., 2020. 51.12 Psychological Impact of COVID-19 on Medical Students in New York City. <em>Journal of the American Academy of Child and Adolescent Psychiatry</em>, 59(10), p.254.</p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Kumar, V.</strong>, Ankuda, C.K., Aldridge, M.D., Husain, M. and Ornstein, K.A., 2020. Family caregiving at the end of life and hospice use: A national study of Medicare beneficiaries. <em>Journal of the American Geriatrics Society</em>, 68(10), pp.2288-2296.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Page -->
+    <div class="page" id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in touch</h3>
+                    <p>I am currently accepting new patients. Please schedule an initial consultation using my <a href="https://care.headway.co/providers/vedika-kumar?utm_source=pem&utm_medium=direct_link&utm_campaign=180613" target="_blank">Headway page</a>.</p>
+                    
+                    <div class="contact-details">
+                        <div>
+                            <h4>Phone</h4>
+                            <span class="phone-number">(929) 813-5509</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Page navigation
+        const pages = document.querySelectorAll('.page');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function showPage(pageId) {
+            // Hide all pages
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+            }
+
+            // Update nav active state
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Nav link clicks
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.dataset.page;
+                showPage(pageId);
+            });
+        });
+
+        // Handle browser back/forward
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.substring(1) || 'home';
+            showPage(hash);
+        });
+
+        // Handle direct URL navigation
+        window.addEventListener('load', () => {
+            const hash = window.location.hash.substring(1) || 'home';
+            showPage(hash);
+        });
+    </script>
+</body>
+</html>
