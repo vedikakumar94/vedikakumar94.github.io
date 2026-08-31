@@ -43,6 +43,7 @@
             font-size: 1.6rem;
             font-weight: 400;
             color: #4a3428;
+            text-decoration: none;
         }
 
         nav ul {
@@ -75,11 +76,6 @@
 
         .page.active {
             display: flex;
-        }
-
-        #contact {
-            padding-top: 0;
-            margin-top: -3rem;
         }
 
         .container {
@@ -116,7 +112,7 @@
 
         .home-credentials {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem 2rem;
             border: 1px solid #c4caa8;
             border-radius: 0;
         }
@@ -126,6 +122,8 @@
             font-weight: 400;
             margin-bottom: 1.5rem;
             color: #4a3428;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #c4caa8;
         }
 
         .home-credentials ul {
@@ -140,8 +138,14 @@
             border-bottom: 1px solid #c4caa8;
         }
 
+        .home-credentials li:first-child {
+            padding-top: 0;
+            margin-top: -0.5rem;
+        }
+
         .home-credentials li:last-child {
             border-bottom: none;
+            padding-bottom: 0;
         }
 
         .home-credentials strong {
@@ -210,7 +214,15 @@
             color: #4a3428;
         }
 
+        #contact {
+            margin-top: -8.5rem;
+        }
+
         /* About Page */
+        #about {
+            padding-bottom: 4rem;
+        }
+
         h2 {
             font-size: 2.2rem;
             font-weight: 400;
@@ -230,37 +242,71 @@
             display: grid;
             grid-template-columns: 1fr 1.6fr;
             gap: 4rem;
-            margin-top: 2rem;
+            align-items: start;
+            margin-top: 2.5rem;
         }
 
         .about-column {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            border-right: 2px solid #bec2ac;
-            padding-right: 2rem;
+            margin-top: -2rem;
         }
 
         .services-column {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0;
+            background: white;
+            padding: 1.5rem 2rem;
+            padding-top: 3.5rem;
+            border: 1px solid #c4caa8;
+            border-radius: 0;
+            margin-top: -3.5rem;
         }
 
-        .about-column h3,
-        .services-column h3 {
+        .about-column h3 {
             font-size: 1.45rem;
             font-weight: 400;
             margin-bottom: 0;
             color: #4a3428;
         }
 
+        .services-column h3 {
+            font-size: 1.45rem;
+            font-weight: 400;
+            margin-bottom: 0;
+            margin-top: -2rem;
+            color: #4a3428;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #c4caa8;
+        }
+
         .about-column p,
         .services-column p {
-            margin-bottom: 1.5rem;
             color: #333333;
             line-height: 1.8;
             font-size: 1.05rem;
+        }
+
+        .about-column p {
+            margin-bottom: 0.8rem;
+        }
+
+        .services-column p {
+            margin-bottom: 0.8rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #c4caa8;
+        }
+
+        .services-column p:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .services-column p:first-of-type {
+            padding-top: 1rem;
         }
 
         .about-column a,
@@ -279,7 +325,7 @@
             color: #4a3428;
             font-size: 1.15rem;
         }
-        
+
         .credentials {
             border-left: 1px solid #c4caa8;
             padding-left: 4rem;
@@ -387,12 +433,16 @@
         }
 
         .publications {
-            margin-top: 2rem;
+            margin-top: 0;
         }
 
         .publication-item {
             padding: 1.5rem 0;
             border-bottom: 1px solid #c4caa8;
+        }
+
+        .publication-item:first-child {
+            padding-top: 0;
         }
 
         .publication-item:last-child {
@@ -448,16 +498,23 @@
             margin-top: 2rem;
         }
 
-        .contact-details div {
+        .contact-details p {
             margin-bottom: 1rem;
             color: #333333;
+            font-size: 1.05rem;
         }
 
-        .contact-details h4 {
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-            color: #4a3428;
+        .contact-details a {
+            color: #576036;
+            text-decoration: none;
+        }
+
+        .contact-details a[href^="mailto"] {
+            text-decoration: underline;
+        }
+
+        .contact-details a:hover {
+            opacity: 0.6;
         }
         
         .phone-number {
@@ -576,11 +633,6 @@
             line-height: 1.6;
         }
         
-        .footer-section a {
-            color: #4a3428;
-            text-decoration: underline;
-        }
-        
         .footer-section a:hover {
             opacity: 0.7;
         }
@@ -653,7 +705,7 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="nav-name">Vedika Kumar, MD</div>
+            <a href="#home" class="nav-name nav-link" data-page="home">Vedika Kumar, MD</a>
             <ul>
                 <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
                 <li><a href="#about" class="nav-link" data-page="about">About</a></li>
@@ -721,6 +773,7 @@
 
                 <div class="services-column">
                     <h3>Treatment Options</h3>
+                    
                     <p><strong>Psychiatric Evaluation</strong><br>
                     In our first session, you can expect thoughtful, attentive listening as you share what brings you in. Too often in the medical system, we rush to treat without a thorough understanding of the problem at hand. My goal is for you to feel heard, respected, and understood.</p>
 
@@ -778,14 +831,8 @@
                     <p>I am currently accepting new patients. I am an out-of-network provider. If you have out of network benefits, I can provide documentation that you can submit to your insurance company for reimbursement. You may schedule a free initial consultation call by emailing or calling.</p>
                     
                     <div class="contact-details">
-                        <div>
-                            <h4>Phone</h4>
-                            <span class="phone-number">(929) 813-5509</span>
-                        </div>
-                        <div>
-                            <h4>Email</h4>
-                            <a href="mailto:psychiatry@vedikakumarmd.com" class="phone-number">psychiatry@vedikakumarmd.com</a>
-                        </div>
+                        <p>Phone: <a href="tel:(929)813-5509">(929) 813-5509</a></p>
+                        <p>Email: <a href="mailto:psychiatry@vedikakumarmd.com">psychiatry@vedikakumarmd.com</a></p>
                     </div>
                 </div>
             </div>
@@ -796,12 +843,10 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h4>Phone</h4>
-                <p>(929) 813-5509</p>
+                <p>Phone: <a href="tel:(929)813-5509">(929) 813-5509</a></p>
             </div>
             <div class="footer-section">
-                <h4>Email</h4>
-                <p><a href="mailto:psychiatry@vedikakumarmd.com">psychiatry@vedikakumarmd.com</a></p>
+                <p>Email: <a href="mailto:psychiatry@vedikakumarmd.com">psychiatry@vedikakumarmd.com</a></p>
             </div>
         </div>
         <div class="footer-bottom">
